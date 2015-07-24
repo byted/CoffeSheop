@@ -1,4 +1,4 @@
-#CoffeShop
+#CoffeeShop
 
 A WepApp to keep track of your small kiosk at work / your sports club / … based on Ruby on Rails and Metro-UI
 * touch friendly
