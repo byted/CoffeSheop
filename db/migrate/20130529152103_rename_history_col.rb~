@@ -1,0 +1,8 @@
+class RenameHistoryCol < ActiveRecord::Migration
+  def up
+		rename_column :history, :name, :user
+  end
+
+  def down
+  end
+end

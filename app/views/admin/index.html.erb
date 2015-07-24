@@ -1,0 +1,110 @@
+<% content_for :head do %>
+	<%= button_to 'Back', store_path, class: "bg-color-blue" %>
+	Administration
+<% end %>
+
+<div class="grid">
+  <div class="row">   
+
+  	<% unless Product.stock_full? %>
+  		<div class="admin_tile tile double bg-color-red">
+      	<%= link_to products_path do %>
+	      	<div class="tile_content">
+						<div class="name">Products are running low!</div>
+						<div style="font-size: x-small;">Click to see</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    	</div>
+    <% end %>
+
+
+    <div class="admin_tile tile">
+      	<%= link_to :add_money do %>
+	      	<div class="tile_content">
+						<div class="name">Add Money</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to :replenish do %>
+	      	<div class="tile_content">
+						<div class="name">Replenish Stock</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to new_user_path do %>
+	      	<div class="tile_content">
+						<div class="name">Add User</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to new_product_path do %>
+	      	<div class="tile_content">
+						<div class="name">Add Product</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to new_cleaning_path do %>
+	      	<div class="tile_content">
+						<div class="name">Add Manual Cleaning</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+  </div>
+
+  <div class="row">   
+
+     <div class="admin_tile tile">
+      	<%= link_to admin_settings_path do %>
+	      	<div class="tile_content">
+						<div class="name">Settings</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+		<div class="admin_tile tile">
+			<%= link_to products_path do %>
+      	<div class="tile_content">
+					<div class="name">Products</div>
+				</div>
+				<div class="brand"></div>
+			<% end %>  
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to users_path do %>
+	      	<div class="tile_content">
+						<div class="name">Users</div>
+						<% if @debt != 0 %>
+							<div class="info">Outstanding payments: <span class="bold"><%= number_to_currency @debt %></span></div>
+						<% end %>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+    <div class="admin_tile tile">
+      	<%= link_to histories_path do %>
+	      	<div class="tile_content">
+						<div class="name">History</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    </div>
+
+  </div>
+</div>

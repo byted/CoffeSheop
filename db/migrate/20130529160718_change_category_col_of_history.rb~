@@ -1,0 +1,9 @@
+class ChangeCategoryColOfHistory < ActiveRecord::Migration
+  def up
+		change_column :histories, :category, :string
+  end
+
+  def down
+		change_column :histories, :string, :category
+  end
+end

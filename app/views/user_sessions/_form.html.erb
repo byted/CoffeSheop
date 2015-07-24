@@ -1,0 +1,20 @@
+ <h3> Select User</h3>
+ <div id="select_user"> 
+  <% @users.each do |user| %>
+    <a href="#" onclick="$('#select_user').slideUp('fast');$('#login').slideDown('slideDown');$('#login_input_field').val(this.textContent);$('#pw_input_field').focus()" class="select_user_item"><%= user.login %></a>
+    
+  <% end %>
+</div>
+<div id="login" style="display:none;">
+    <div class="field">
+      <%= f.hidden_field :login, value: "", id: "login_input_field" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, id: "pw_input_field" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Login" %>
+    </div>
+  <% end %>
+</div>

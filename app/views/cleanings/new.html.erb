@@ -1,0 +1,17 @@
+<% content_for :head do %>
+	<%= button_to 'Back', admin_path, method: :get %>
+	Add Manual Cleaning
+<% end %>
+
+<%= form_tag(cleanings_path) do %>
+	<div class="field input-control select">
+		<label>Who cleaned the machine?</label><br />
+		<select id="add_cleaning_for" name="id">
+			<%= options_from_collection_for_select @users, :id, :login %>
+		</select>
+	</div>
+
+	<div class="field input-control text">
+		<input type="submit" value="Add" id="add_money" >
+	</div>
+<% end %>

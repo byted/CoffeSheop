@@ -1,0 +1,46 @@
+<% content_for :meta do %>
+	<META HTTP-EQUIV="refresh" CONTENT="30;<%= root_path %>">
+<% end %>
+
+<% content_for :head do %>
+	Summary
+<% end %>
+
+
+<div class="element">
+	<b><%= @details[:user]  %></b> just bought: <br />
+	<table>
+		<thead><tr style="display:none">
+			<th class="amount_table_col"></th>
+			<th class="name_table_col"></th>
+			<th class="quantity_table_col"></th>
+		</tr></thead>
+		<tbody>
+			<% @details[:products].each do |item| %>
+				<tr class="order_entry">
+					<td class="amount_table_col"><%= item[:quantity] %> ×</td>
+					<td class="name_table_col"><%= item[:name] %></td>
+					<td class="item_price quantity_table_col"><%= number_to_currency(item[:price]) %></td>
+				</tr>
+			<% end %>
+			<tr id="total_price">
+				<td class="amount_table_col"><%= @details[:total_items] %></td>
+				<td class="name_table_col"></td>
+				<td class="quantity_table_col"><%= number_to_currency(@details[:full_price]) %></td>
+			</tr>
+			<tr id="discount">
+				<td class="amount_table_col"></td>
+				<td class="name_table_col">Saved with Bonus Points</td>
+				<td class="quantity_table_col">-<%= number_to_currency(@details[:money_saved]) %></td>
+			</tr>
+			<tr id="total_price">
+				<td class="amount_table_col">Total</td>
+				<td class="name_table_col"></td>
+				<td class="quantity_table_col"><%= number_to_currency(@details[:to_pay]) %></td>
+			</tr>
+		</tbody>
+	</table>
+	New balance: <%= number_to_currency(@details[:new_balance]) %><p />
+	<%= button_to "Home", root_path %>
+</div>
+

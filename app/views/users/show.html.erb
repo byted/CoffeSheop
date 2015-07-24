@@ -1,0 +1,50 @@
+<% content_for :head do %>
+  <% if is_admin %>
+    <%= button_to 'Back', users_path, method: :get %>
+  <% else %>
+    <%= button_to 'Back', store_path, method: :get %>
+  <% end %>
+  <%= @user.login %>'s details
+<% end %>
+
+<p>
+  <b>Login:</b>
+  <%= @user.login %>
+</p>
+
+<p>
+  <b>Balance:</b>
+  <%= number_to_currency(@user.balance) %>
+</p>
+
+<p>
+  <b>Bonus Points:</b>
+  <%= @user.bonus_points %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @user.level %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Login count:</b>
+  <%= @user.login_count %>
+</p>
+
+<p>
+  <b>Failed login count:</b>
+  <%= @user.failed_login_count %>
+</p>
+
+<%= render 'histories/list_history_linkless', object: @histories %>
+
+<%= button_to 'Edit', edit_user_path(@user), method: :get %>
+<% if is_admin %>
+  <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

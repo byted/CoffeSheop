@@ -1,0 +1,73 @@
+<% content_for :head do %>
+	<%= button_to 'Logout', :logout, method: :delete, id: "button_cancel" %>
+	<span class="name"><%= current_user.login %> (<%= number_to_currency(current_user.balance) %> - <%= current_user.bonus_points %> Bonus Points)</span>
+<% end %>
+
+<div class="grid">
+  <div class="row">
+  	              
+    <% @products.each do |product|    %>
+     	<div class="product_tile tile <%= @cart.quantityOf(product.id) > 0 ? "selected" : "" %> <%= product.name == "Coffee" ? "double" : "" %>" id="product-<%= product.id %>">
+      	<%= link_to items_in_carts_path(product_id: product), remote: true, method: :post do %>
+      	<div class="tile_content">
+					<div class="product_name name"><%= product.name %></div>
+					<% if current_user.bonus_points > 0 && product.name == "Coffee"%>
+						<p>You can get <%= current_user.bonus_points %> for free with your Bonus Points</p>
+					<% end %>
+				</div>
+				<div class="brand">
+            <div class="badge bg-color-blue quantity"><%= @cart.quantityOf(product.id) %></div>
+            <div class="name"><%= number_to_currency(product.price) %></div>
+        </div>
+				<% end %>				
+		</div>
+    <% end %> 
+  </div>
+  <!--<div class="row"><div class="tile" style="visibility:hidden;"></div></div>-->
+  <div class="row">
+
+  	<% if coffee_machine_needs_to_be_cleaned? %>
+  		<div class="info_tile tile triple bg-color-red">
+				<%= link_to cleaning_howto_path, class: "tile_button" do %>
+				<div class="product_name name">Coffee machine needs to be cleaned!</div>
+				<div class="tile-content">Click to get started and see the tutorial. You'll get <%= Settings.number_of_bonus_coffees_for_cleaning %> free coffees for cleaning</div>
+				<% end %>
+			</div>
+		<% end %>
+
+		<% unless Product.stock_full? || !is_admin %>
+  		<div class="setings_tile tile double bg-color-red">
+      	<%= link_to products_path do %>
+	      	<div class="tile_content">
+						<div class="name">Products are running low!</div>
+						<div style="font-size: x-small;">Click to see</div>
+					</div>
+					<div class="brand"></div>
+				<% end %>      
+    	</div>
+    <% end %>
+
+		<div class="settings_tile tile">
+			<%= link_to :edit_me, class: "tile_button" do %>
+			<div class="product_name name">My Settings</div>
+			<% end %>
+		</div>
+
+  	<% if is_admin %>
+	    <div class="settings_tile tile">
+				<%= link_to admin_path, class: "tile_button" do %>
+				<div class="product_name name">Admin Settings</div>
+				<% end %>
+			</div>
+		<% end %>
+
+  </div>
+</div>
+
+<% content_for :charm do %>
+	<h2 id="total_price">Σ <%= number_to_currency(@cart.total_price) %></h2>
+	<%= button_to 'Checkout', :checkout, method: :post, class: "bg-color-blue" %>
+	<%= button_to 'Reset', @cart, method: :delete, remote: true, class: "bg-color-blue" %>
+<% end %>
+
+

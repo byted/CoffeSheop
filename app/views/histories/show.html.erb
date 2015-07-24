@@ -1,0 +1,34 @@
+<% content_for :head do %>
+  <%= button_to 'Back', histories_path, method: :get %>
+  History #<%= @history.id %>
+<% end %>
+
+<p>
+  <b>Category:</b>
+  <%= @history.category %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @history.user.login %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @history.name %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @history.quantity %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency @history.total %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @history.created_at %>
+</p>

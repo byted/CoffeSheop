@@ -1,0 +1,9 @@
+class ChangeUserIdColInCleaning < ActiveRecord::Migration
+  def up
+  	change_column :cleanings, :user_id, :integer, null: false
+  end
+
+  def down
+  	raise ActiveRecord::IrreversibleMigration
+  end
+end

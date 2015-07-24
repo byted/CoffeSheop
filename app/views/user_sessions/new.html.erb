@@ -1,0 +1,35 @@
+<% content_for :head do %>
+  <span class="name">Login</span>
+<% end %>
+
+<div class="grid">
+  <div class="row">
+              
+    <% @users.each do |user|    %>
+      <div class="select_user_tile tile" <%= user.emptypw ? "data-fastforward=true" : "" %>>
+        <div class="tile_content">
+          <a href="#">
+            <div class="select_user_name name"><%= user.login %></div>
+          </a>          
+        </div>
+        <div class="brand">
+          <div class="name"><%= number_to_currency(user.balance) %></div>
+          <div class="badge bg-color-<%= ApplicationController::COLORS[user.id % ApplicationController::COLORS.size] %>"></div>
+        </div>
+      </div>
+    <% end %> 
+
+  </div>
+</div>
+       
+<div id="login" style="display: none;">
+  <%= form_for(@user_session, html: {class: "instant_submit"}) do |f| %>
+    <div class="field">
+      <%= f.hidden_field :login, value: "", id: "login_input_field" %>
+    </div>
+    <div class="field input-control password">
+      <%= f.password_field :password, id: "pw_input_field" %>
+    </div>
+  <% end %>
+  <div class="overlay"></div>
+</div>

@@ -1,0 +1,27 @@
+<% content_for :head do %>
+	<%= button_to 'Back', :admin, method: :get %>
+	Users
+<% end %>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Level</th>
+    <th>Email</th>
+    <th>Balance</th>
+  </tr>
+    <% @users.each do |user| %>
+      <tr data-link="<%= user_path(user.id) %>">
+        <td><%= user.login %></td>
+        <td><%= user.level %></td>
+        <td><%= user.email %></td>
+        <td><%= number_to_currency(user.balance) %></td>
+      </tr>
+    <% end %>
+</table>
+<%= will_paginate @users %>
+<%= page_entries_info @users %>
+
+<br />
+
+<%= button_to 'New User', new_user_path, method: :get %>

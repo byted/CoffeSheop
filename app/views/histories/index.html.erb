@@ -1,0 +1,31 @@
+<% content_for :head do %>
+  <%= button_to 'Back', :admin, method: :get%>
+  History
+<% end %>
+
+<table>
+  <tr>
+  	<th>Created</th>
+    <th>Category</th>
+    <th>User</th>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+		<th>Bonus Points Used</th>
+  </tr>
+
+<% @histories.each do |history| %>
+  <tr data-link="<%= history_path(history.id) %>">
+  	<td><%= l history.created_at, format: :short %></td>
+    <td><%= history.category %></td>
+    <td><%= history.user.login %></td>
+    <td><%= history.name %></td>
+    <td><%= history.quantity %></td>
+    <td><%= color_balance_change(history.total) %></td>
+		<td><%= history.bonus_points_used %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @histories %>
+<%= page_entries_info @histories %>

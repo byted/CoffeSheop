@@ -1,0 +1,31 @@
+.user_sessions {	
+	#login {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+
+	#pw_input_field {
+		z-index: 100;
+		width: 35em;
+		max-width: 100%;
+	}
+
+	.charms {
+			min-width: 0;
+			max-width: 0;
+	}
+
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,.7);
+	}
+}

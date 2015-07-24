@@ -1,0 +1,37 @@
+<% content_for :head do %>
+	<%= button_to 'Back', store_path, method: :get %>
+	Edit <%= @user.login %>'s details
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+   <%= render partial: 'layouts/form_input_errors', object: @user.errors %>
+  <% end %>
+
+  <div class="field input-control text">
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+  </div>
+
+  <div class="field input-control text">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field input-control password pin-field">
+    <%= f.label "Pin" %><br />
+    <%= f.password_field :password, class: "keyboard" %>
+  </div>
+  <div class="field input-control password pin-field">
+    <%= f.label "Confirm Pin" %><br />
+    <%= f.password_field :password_confirmation, class: "keyboard" %>
+  </div>
+  <div class="field input-control ">
+  	<%= f.label "Don't use Pin for login" %>
+  	<%= f.check_box :emptypw %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= render 'histories/list_history_linkless', object: @histories %>

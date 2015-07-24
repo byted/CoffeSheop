@@ -1,0 +1,29 @@
+<% content_for :head do %>
+    <%= button_to 'Back', :admin, method: :get %>
+  Products
+<% end %>
+
+<% unless Product.stock_full? %>
+  <%= render partial: 'layouts/notice', object: {head: "Products are running low", text: "They are marked below!"} %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>In Stock</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <%= content_tag :tr, data: {link: product_path(product.id)}, class: (product.is_running_low? ? "bg-color-red" : "") do %>
+    <td><%= product.name %></td>
+    <td><%= number_to_currency(product.price) %></td>
+    <td><%= product.in_stock %></td>
+  <% end %>
+<% end %>
+</table>
+<%= will_paginate @products %>
+
+<br />
+
+<%= button_to 'New Product', new_product_path, method: :get %>

@@ -1,0 +1,18 @@
+<div class="grid">
+  <div class="row">
+              
+    <% grid.each do |item|    %>
+      <div class="tile outline-color-blue">
+        <div class="tile_content">
+          <a href="#">
+            <div class="select_user_name name"><%= user.login %></div>
+          </a>          
+        </div>
+        <div class="brand">
+            <div class="name"><%= number_to_currency(user.balance) %></div>
+        </div>
+      </div>
+    <% end %> 
+
+  </div>
+</div>

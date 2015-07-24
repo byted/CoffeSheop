@@ -1,0 +1,26 @@
+<% unless @histories.blank? %>
+	<b>History</b>
+
+  <table>
+    <tr>
+      <th>Created</th>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Nbr. of Products</th>
+      <th>Total</th>
+    </tr>
+
+  <% @histories.each do |h| %>
+    <%= content_tag :tr do %>
+      <td><%= l h.created_at, format: :short %></td>
+      <td><%= h.category %></td>
+      <td><%= h.name %></td>
+      <td><%= h.quantity %></td>
+      <td><%= color_balance_change(h.total) %> (with <%= h.bonus_points_used %> Bonus Points)</td>
+    <% end %>
+  <% end %>
+  </table>
+<%= will_paginate @histories %>
+<%= page_entries_info @histories %>
+<% end %>
+

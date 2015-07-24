@@ -1,0 +1,26 @@
+// Place all the styles related to the Store controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.store {
+	.page-region {
+		margin-right: 10em;
+	}
+	.charms {
+		min-width: 10em !important;
+		h2 {
+			margin-bottom: 1em;
+		}
+
+		input {
+			margin: 0 auto 2em auto;
+			transform: scale(1.5);
+		}
+	}
+
+	#button_cancel {
+		transform: scale(1.3);
+	}
+	.button_to {
+		float: none !important;
+	}
+}

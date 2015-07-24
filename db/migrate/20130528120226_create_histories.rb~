@@ -1,0 +1,25 @@
+class CreateHistories < ActiveRecord::Migration
+  def up
+    create_table :histories do |t|
+      t.string :category, :null => false
+      t.string :name, :null => false
+      t.decimal :total, :precision => 8, :scale => 2
+      t.integer :quantity, :default => 1
+      t.integer :user, :null => false
+      t.integer :bonus_points, :default => 0
+
+      t.timestamps
+    end
+    
+    Order.all.each do |o|
+    	ItemsInCart.find_all_by_order_id(o).each do |i|
+    		i.product == "coffee" ? bpu = o.bonus_points : bpu = 0
+    		History.new(user: User.find(o.user), category: "buy", name: i.product.name, quantity: i.quantity, total: (i.product.price*i.quantity), bonus_points: bpu, created_at: o.created_at, updated_at: o.updated_at)
+    	end
+    end
+  end
+  
+  def down
+  	drop_table :histories
+  end
+end

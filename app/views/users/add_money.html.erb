@@ -1,0 +1,18 @@
+<% content_for :head do %>
+	<%= button_to 'Back', admin_path, method: :get %>
+	Add Money
+<% end %>
+
+<%= form_tag(:update_balance) do %>
+	<div class="field input-control select">
+		<select id="add_money_for" name="id">
+			<%= options_from_collection_for_select @users, :id, :login %>
+		</select>
+	</div>
+	<%= label_tag "Amount to add" %>
+	<%= input_nbr "field input-control text", "balance", 10, "€" %>
+
+	<div class="field input-control text">
+		<input type="submit" value="Add" id="add_money" >
+	</div>
+<% end %>

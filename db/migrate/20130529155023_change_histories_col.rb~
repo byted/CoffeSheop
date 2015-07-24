@@ -1,0 +1,9 @@
+class ChangeHistoriesCol < ActiveRecord::Migration
+  def up
+		rename_col :histories, :type, :category
+  end
+
+  def down
+		rename_col :histories, :category, :type
+  end
+end

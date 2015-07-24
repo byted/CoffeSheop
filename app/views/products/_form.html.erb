@@ -1,0 +1,30 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <%= render partial: 'layouts/form_input_errors', object: @product.errors %>
+  <% end %>
+
+  <div class="field input-control text">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field input-control text">
+    <%= f.label :price %><br />
+    <%= input_nbr "field input-control text", "product[price]", @product.price, "€" %>
+  </div>
+  <div class="field input-control text">
+    <%= f.label :amount_per_unit %><br />
+      <%= input_nbr "field input-control text", "product[amount_per_unit]", @product.amount_per_unit %>
+    <span>(e.g.: a cup of coffee needs 20g of coffee powder)</span>
+  </div>
+  <div class="field input-control text">
+    <%= f.label :in_stock %><br />
+      <%= input_nbr "field input-control text", "product[in_stock]", @product.in_stock %>
+  </div>  
+  <div class="field input-control text">
+    <%= f.label :threshold %><br />
+    <%= input_nbr "field input-control text", "product[threshold]", @product.threshold %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

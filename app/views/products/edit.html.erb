@@ -1,0 +1,7 @@
+<%= content_for :head do %>
+	<%= button_to 'Back', products_path, method: :get, class: "bg-color-blue" %>
+	Editing <%= @product.name %>
+<% end %>
+
+<%= render 'form' %>
+

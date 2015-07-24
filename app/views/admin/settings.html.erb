@@ -1,0 +1,20 @@
+<% content_for :head do %>
+	<%= button_to 'Back', admin_path %>
+	Administrative Settings
+<% end %>
+
+<div>Coffes since last cleaning: <%= @counter %></div>
+
+<%= form_tag("/admin/update_settings") do %>
+  <% @settings.each do |key, val| %>
+    <%= label_tag key.gsub(/_|\.|gui/, ' ') %><br />
+	  <% if is_numeric(val) %>
+	  	<%= input_nbr "field input-control text", key, val, "" %>
+	  <% else %>
+	  	<div class="field input-control text">
+	  		<%= text_field_tag key, val %>
+	  	</div>
+	  <% end %>
+  <% end %>
+  <%= submit_tag("Save") %>
+<% end %>

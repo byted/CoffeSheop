@@ -1,0 +1,9 @@
+<div id="login">
+  <%= form_tag :verify, class: "instant_submit" do %>
+    <div class="field input-control password">
+      <%= label_tag "Enter Pin" %>
+      <%= password_field_tag :password, nil, {id: "pw_input_field", class: "ask_pin"} %>
+    </div>
+  <% end %>
+  <div class="overlay"></div>
+</div>

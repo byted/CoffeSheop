@@ -1,0 +1,24 @@
+<div class="notices mod_notice <%= notice[:class] %>">
+  <div class="bg-color-<%= notice[:color] ? notice[:color] : "red" %>">
+
+  <% if notice[:icon] %>
+    <div class="notice-icon"> 
+      <%= notice[:icon] %>
+    </div>
+  <% end %>
+
+  <% if notice[:image] %>
+    <div class="notice-image">
+      <%= notice[:image] %>
+    </div>
+  <% end %>
+
+    <div class="header">
+      <%= notice[:head] %>
+    </div>
+
+    <div class="notice-text">
+      <%= notice[:text] %>
+    </div>
+  </div>
+</div>

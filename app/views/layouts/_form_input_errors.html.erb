@@ -1,0 +1,14 @@
+<div class="notices mod_notice">
+  <div class="bg-color-red">
+    <div class="header">
+      <%= pluralize(form_input_errors.count, "error") %> prohibited this from being saved:
+    </div>
+    <div class="notice-text">
+      <ul>
+      <% form_input_errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

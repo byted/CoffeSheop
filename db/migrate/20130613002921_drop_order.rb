@@ -1,0 +1,15 @@
+class DropOrder < ActiveRecord::Migration
+  def up
+  	drop_table :orders
+  	ItemsInCart.delete_all
+  end
+
+  def down
+  	create_table "orders", :force => true do |t|
+    t.integer  "user"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "bonus_points_used", :default => 0
+  end
+  end
+end

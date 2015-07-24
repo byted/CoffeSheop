@@ -1,0 +1,10 @@
+// Place all the styles related to the carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.carts {
+	tr#total_price > td {
+		border-top: .2em solid #fff;
+	}
+}
+

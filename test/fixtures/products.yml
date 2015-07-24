@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  price: 9.99
+  categorie: 1
+  in_stock: 10
+  threshold: 5
+  amount_per_unit: 20
+
+two:
+  name: MyString2
+  description: MyString
+  price: 9.99
+  categorie: 1
+  in_stock: 10
+  threshold: 5
+  amount_per_unit: 20

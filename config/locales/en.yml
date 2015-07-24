@@ -1,0 +1,39 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  number:
+    currency:
+        format:
+            format: "%n%u"
+            unit: "€"
+  activerecord:
+    models:
+      user:
+        zero:  users
+        one: user
+        other: users
+      product:
+        zero:  products
+        one: product
+        other: products
+      history:
+        zero:  history entries
+        one: history entry
+        other: history entries
+      cleaning:
+        zero:  cleanings
+        one: cleaning
+        other: cleanings
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero: 'No %{model} found'
+        one:   "Displaying 1 %{model}"
+        other: "Displaying all %{count} %{model}"
+      single_page_html:
+        zero:  '<div class="paginate_quantities">No %{model} found'
+        one:   '<div class="paginate_quantities">Displaying <span class="bold">1</span> %{model}'
+        other: '<div class="paginate_quantities">Displaying <span class="bold">all</span> %{count} %{model}'
+      multi_page: '%{from} - %{to} of %{count}'
+      multi_page_html: '<div class="paginate_quantities">%{from} - %{to} of %{count}</div>'        

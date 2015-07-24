@@ -1,0 +1,18 @@
+<% content_for :head do %>
+	<%= button_to 'Back', admin_path, method: :get %>
+	Add to Stock
+<% end %>
+
+<%= form_tag(:update_stock) do %>
+	<div class="field input-control select">
+		<select id="replenish_stock_for" name="id">
+			<%= options_from_collection_for_select @products, :id, :name %>
+		</select>
+	</div>
+	<%= label_tag "Amount to add" %>
+	<%= input_nbr "field input-control text", "stock" %>
+
+	<div class="field input-control text">
+		<input type="submit" value="Add" id="replenish" >
+	</div>
+<% end %>

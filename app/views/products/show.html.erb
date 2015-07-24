@@ -1,0 +1,38 @@
+<% content_for :head do %>
+  <%= button_to 'Back', products_path, method: :get%>
+  <%= @product.name %>
+<% end %>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@product.price) %>
+</p>
+
+<% if @product.is_running_low? %>
+  <%= render partial: 'layouts/notice', object: { head: "Running low on #{@product.name}!"} %>
+<% end %>
+
+<p>
+  <b>In Stock:</b>
+  <%= @product.in_stock %>
+</p>
+
+<p>
+  <b>Amount per Unit:</b>
+  <%= @product.amount_per_unit %>
+  <span>(e.g.: a cup of coffee needs 20g of coffee powder)</span>
+</p>
+
+<p>
+  <b>Threshold:</b>
+  <%= @product.threshold %>
+</p>
+
+
+<%= button_to 'Edit', edit_product_path(@product), method: :get %>
+<%= button_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
