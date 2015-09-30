@@ -9,6 +9,12 @@ A WepApp to keep track of your small kiosk at work / your sports club / … base
 * set thresholds to get a warning if stock is running low
 * …
 
+##Screenshots
+
+<img src="http://i.imgur.com/SZKv92r.png" width="400px">
+<img src="http://i.imgur.com/MUAsMz9.png" width="400px">
+<img src="http://i.imgur.com/vmwHjFw.png" width="200px">
+
 __Beware: it's > 3 years old!__
 
 ## Run local on Ubuntu (quick 'n easy without RVM)
